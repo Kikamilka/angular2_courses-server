@@ -21,11 +21,13 @@ import { CoolDateComponent } from './courses/date/cool-date.component'
 import { durationCoursePipe } from './pipes/duration-course.pipe';
 import { searchPipe } from './pipes/search.pipe';
 import {LoginService} from './login/login.service';
+import {CoursesService} from './courses/service/courses.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   LoginService,
+  CoursesService,
   AppState,
   CanActivateGuard,
   CanLoginGuard

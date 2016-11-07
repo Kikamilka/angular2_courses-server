@@ -32,6 +32,8 @@ export class Courses implements OnInit{
   deleteCourse(deleteIndex: number) {
     if (confirm("Уверены что хотите удалить курс "+this.courses[deleteIndex].title+"?")) {
       this.coursesService.deleteCourse(deleteIndex);
+      // it's test error; should be delete this string for normal work!
+      throw new Error("my test error!!");
     }
   }
 }
