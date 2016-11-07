@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { DatePipe } from "@angular/common";
-
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 /*
@@ -22,10 +20,12 @@ import { CanLoginGuard, CanActivateGuard, myErrorHandler } from './services';
 import { CoolDateComponent } from './courses/date/cool-date.component'
 import { durationCoursePipe } from './pipes/duration-course.pipe';
 import { searchPipe } from './pipes/search.pipe';
+import {LoginService} from './login/login.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
+  LoginService,
   AppState,
   CanActivateGuard,
   CanLoginGuard
@@ -42,12 +42,6 @@ const MY_ERROR_HANDLER = [
     useClass: myErrorHandler
   }
 ];
-
-type StoreType = {
-  state: InternalStateType,
-  restoreInputValues: () => void,
-  disposeOldHosts: () => void
-};
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -73,7 +67,7 @@ type StoreType = {
     APP_PROVIDERS,
     MY_ERROR_HANDLER
   ],
-  bootstrap: [ AppComponent, CoolDateComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule {
 }

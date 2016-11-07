@@ -1,7 +1,6 @@
 import { Component, ViewEncapsulation, ViewContainerRef } from '@angular/core';
 import {LoginService} from './login/login.service';
-
-import { AppState } from './app.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app',
@@ -10,6 +9,8 @@ import { AppState } from './app.service';
     './app.component.css'
   ],
   template: `
+    <header>
+    </header>
     <nav class="navbar navbar-default">
       <div class="navbar-header">
           <a class="logo-img" href="{{url}}">
@@ -36,15 +37,10 @@ import { AppState } from './app.service';
     <main>
       <router-outlet></router-outlet>
     </main>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
+    
     <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
+      <div class="panel-footer">
+        This Angular2 application based on webpack-starter
       </div>
     </footer>
   `
@@ -52,7 +48,7 @@ import { AppState } from './app.service';
 export class AppComponent {
   private viewContainerRef: ViewContainerRef;
 
-  public constructor(viewContainerRef: ViewContainerRef, public loginService: LoginService) {
+  public constructor(viewContainerRef: ViewContainerRef, public loginService: LoginService, private router: Router) {
     this.viewContainerRef = viewContainerRef;
   }
 
