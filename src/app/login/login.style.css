@@ -1,0 +1,26 @@
+.login_form {
+  margin: 10px;
+  padding: 4px;
+}
+.field label {
+  min-width: 70px;
+  margin-left: 8px;
+  text-align: left;
+}
+.login-submit {
+  width: 100px;
+  font-weight: bold;
+}
+span.error-message {
+  color: red;
+  margin-left: 10px;
+  font-style: italic;
+}
+div.panel.panel-danger {
+  padding: 8px;
+  font-style: italic;
+  align-content: center;
+  font-weight: bold;
+  width: 270px;
+  color: #fd1f5c;
+}

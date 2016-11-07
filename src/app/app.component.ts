@@ -1,14 +1,8 @@
-/*
- * Angular 2 decorators and services
- */
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ViewContainerRef } from '@angular/core';
+import {LoginService} from './login/login.service';
 
 import { AppState } from './app.service';
 
-/*
- * App Component
- * Top Level Component
- */
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
@@ -16,30 +10,27 @@ import { AppState } from './app.service';
     './app.component.css'
   ],
   template: `
-    <nav>
-      <span>
-        <a [routerLink]=" ['./'] ">
-          Index
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./home'] ">
-          Home
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./detail'] ">
-          Detail
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./about'] ">
-          About
-        </a>
-      </span>
+    <nav class="navbar navbar-default">
+      <div class="navbar-header">
+          <a class="logo-img" href="{{url}}">
+            <img style="width:50px;height:50px" [src]="angularclassLogo">            
+          </a>
+        </div>
+      <div class="container-fluid">        
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            Angular 2 training application            
+          </a>
+        </div>        
+        <ul class="nav navbar-nav">
+          <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['./login']">Login</a></li>
+          <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['./courses']">Courses</a></li>
+        </ul> 
+        <div class="nav login-name-field" *ngIf="loginService.isLoggedIn">
+          <div >User: {{loginService.loginName}}</div>
+          <button (click)="loginService.logout()">Logout</button>
+        </div>       
+      </div>      
     </nav>
 
     <main>
@@ -59,25 +50,12 @@ import { AppState } from './app.service';
   `
 })
 export class AppComponent {
+  private viewContainerRef: ViewContainerRef;
+
+  public constructor(viewContainerRef: ViewContainerRef, public loginService: LoginService) {
+    this.viewContainerRef = viewContainerRef;
+  }
+
   angularclassLogo = 'assets/img/angularclass-avatar.png';
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
-
-  constructor(
-    public appState: AppState) {
-
-  }
-
-  ngOnInit() {
-    console.log('Initial App State', this.appState.state);
-  }
-
+  url = 'https://angular.io';
 }
-
-/*
- * Please review the https://github.com/AngularClass/angular2-examples/ repo for
- * more angular app examples that you may copy/paste
- * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
- * For help or questions please contact us at @AngularClass on twitter
- * or our chat on Slack at https://AngularClass.com/slack-join
- */

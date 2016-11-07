@@ -1,0 +1,56 @@
+.modificationCourseForm {
+  max-width: 800px;
+}
+.modificationCourseForm .form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  max-width: 700px !important;
+  padding: 10px;
+}
+.modificationCourseForm .form-group>label {
+  min-width: 200px;
+  text-align: center;
+
+}
+.modificationCourseForm .form-group>div {
+  max-width: 500px !important;
+}
+.modificationCourseForm .form-group .select {
+  width: 600px !important;
+  display: inline-flex;
+}
+.modificationCourseForm .form-group .select select {
+  margin: 0 15px;
+  width: 200px !important;
+}
+.modificationCourseForm div.duration {
+  display: inline-flex;
+  justify-content: space-between;
+}
+.modificationCourseForm div.duration input {
+  max-width: 300px;
+}
+.modificationCourseForm div.duration p {
+  width: 200px;
+  text-align: center;
+}
+input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
+  border: 1px solid #c62133 !important;
+}
+div.error-date {
+  color: #c62133;
+}
+div.list-courses form {
+  border: solid 1px black;
+  padding: 14px;
+}
+div.view-search-button, div.view-duration {
+  text-align: left;
+}
+div.view-add-button, div.view-date {
+  text-align: right;
+}
+div.view-edit-button, div.view-delete-btn {
+  text-align: center;
+}

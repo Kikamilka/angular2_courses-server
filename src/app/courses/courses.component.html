@@ -1,0 +1,48 @@
+<div class="container">
+  <form class="form-horizontal" [formGroup]="courseForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <input type="text" class="form-control" placeholder="фрагмент имени" id="filter-name" #nameSearch>
+      </div>
+      <div class="col-sm-4 view-search-button">
+        <button class="btn btn-default btn-filter-course" type="button" (click)="filterText=nameSearch.value">
+          Найти</button>
+      </div>
+      <div class="col-sm-4 view-add-button">
+        <button class="btn btn-default btn-new-course" type="submit" [routerLink]="['./', 'new']">Добавить курс</button>
+      </div>
+    </div>
+    <div class="list-courses" *ngFor="let course of (courses | search:filterText); let i = index;">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-sm-3 view-title">
+            <p class="name-course">{{course.title}}</p>
+          </div>
+          <div class="col-sm-3 view-duration">
+            <p>{{course.duration | durationCourse}}</p>
+          </div>
+          <div class="col-sm-3 view-date">
+            <p>{{course.date}}</p>
+          </div>
+          <div class="col-sm-2 view-edit-button">
+            <button class="btn btn-default btn-edit-course" type="submit" [routerLink]="['./', i]">
+              Редактировать</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-9">
+            <div class="description-course" style="text-align: justify">
+              {{course.description}}
+            </div>
+          </div>
+          <div class="col-sm-2 view-delete-btn">
+            <button class="btn btn-default btn-edit-course" type="button"
+                    (click)="deleteCourse(i)">Удалить
+            </button>
+          </div>
+        </div>
+      </form>
+      <br>
+    </div>
+  </form>
+</div>

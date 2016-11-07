@@ -1,0 +1,26 @@
+<div class="container">
+  <form class="login_form ui form form-horizontal" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <div *ngIf="!isLogin && textError!=''" class="panel panel-danger">{{textError}}</div>
+    <div class="field form-group">
+      <label for="name" class="login-name">Логин:</label>
+      <input type="text" placeholder="Логин" id="name" formControlName="name">
+
+      <span *ngIf="loginForm.controls.name.hasError('pattern')" class="error-message">
+      Можно использовать только латинские буквы </span>
+      <span *ngIf="loginForm.controls.name.touched && isEmpty('name')" class="error-message">
+      *введите </span>
+    </div>
+
+    <div class="field form-group">
+      <label for="password" class="login-password">Пароль:</label>
+      <input type="password" placeholder="Пароль" id="password" formControlName="password">
+
+      <span *ngIf="loginForm.controls.password.hasError('pattern')" class="error-message">
+      Можно использовать только латинские буквы или цифры </span>
+      <span *ngIf="loginForm.controls.password.touched && isEmpty('password')" class="error-message">
+      *введите </span>
+    </div>
+
+    <button [disabled]="!loginForm.valid" class="login-submit btn btn-success" type="submit">Войти</button>
+  </form>
+</div>
